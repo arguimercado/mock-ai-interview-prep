@@ -49,7 +49,7 @@ interface InterviewCardProps {
   userId?: string;
   role: string;
   type: string;
-  techstack: string[];
+  techstacks: string[];
   createdAt?: string;
 }
 

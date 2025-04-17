@@ -2,16 +2,18 @@ import { generateText } from "ai";
 import { google } from "@ai-sdk/google";
 import { getRandomInterviewCover } from "@/lib/utils";
 import { db } from "@/lib/firebase/admin";
+
+
 export async function GET() {
    return Response.json({ success: true, data: 'Hello from VAPI!' } as APIResponse<string>, { status: 200 });
 }
 
 export async function POST(request: Request) {
+
    const { type, role, level, techstack, amount, userid } = await request.json();
 
    try {
       const { text: questions } = await generateText({
-         
          model: google('gemini-2.0-flash-001'),
          prompt: `Prepare questions for a job interview.
                   The job role is ${role}.
@@ -38,7 +40,7 @@ export async function POST(request: Request) {
          coverImage: getRandomInterviewCover(),
          createdAt: new Date().toISOString(),
       }
-
+      
       await db.collection("interviews").add(interview);
 
       return Response.json({ success: true, data: interview } as APIResponse<typeof interview>, { status: 200 });

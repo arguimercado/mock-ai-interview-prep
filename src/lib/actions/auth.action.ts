@@ -14,7 +14,7 @@ export async function signUp(params: SignUpParams) {
 
    try {
       const userCredentials = await createUserWithEmailAndPassword(clientAuth, email,password);
-      console.log(userCredentials);
+     
       const uid = userCredentials.user.uid;
       //check if user already exists in firestore
       const userRecord = await db.collection("users").doc(uid).get();
@@ -62,7 +62,7 @@ export async function signIn(params: SignInParams) {
       }
       
       const userCredentials = await signInWithEmailAndPassword(clientAuth, email, password);
-      console.log(userCredentials);
+    
       const idToken = await userCredentials.user.getIdToken();
       
       if(!idToken) {

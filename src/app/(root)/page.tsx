@@ -16,7 +16,7 @@ const Home = async () => {
       await getLatestInterviews({userId: user?.id!}),
    ]);
 
-   console.log(userInterviews, latestInterviews);
+  
   
 
    const hasPastInterviews = userInterviews?.length > 0 ? true : false;

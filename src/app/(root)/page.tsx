@@ -16,9 +16,6 @@ const Home = async () => {
       await getLatestInterviews({userId: user?.id!}),
    ]);
 
-  
-  
-
    const hasPastInterviews = userInterviews?.length > 0 ? true : false;
    const hasUpcomingInterviews = latestInterviews?.length > 0 ? true : false;
 
@@ -33,7 +30,7 @@ const Home = async () => {
                </p>
 
                <Button asChild className="btn-primary max-sm:w-full">
-                  <Link href="/interview">Start Practicing</Link>
+                  <Link href="/interview">Generate Interview</Link>
                </Button>
             </div>
             <Image

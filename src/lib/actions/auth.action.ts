@@ -128,7 +128,16 @@ export async function isAuthenticated() {
 }
 
 
-
+//verify
+export async function verifyIdToken(idToken: string) {
+   try {
+      const decodedToken = await adminAuth.verifyIdToken(idToken);
+      return decodedToken;
+   } catch (error) {
+      console.error("Error verifying ID token:", error);
+      throw new Error("Invalid ID token");
+   }
+}
 
 export async function setSessionCookie(idToken: string) {
    const cookieStore = await cookies();
